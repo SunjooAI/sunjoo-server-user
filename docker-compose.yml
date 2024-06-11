@@ -13,7 +13,7 @@ services:
     ports:
       - "8082:8082"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://sunjoo-user.clau8wyu484y.ap-northeast-2.rds.amazonaws.com:3306
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=sunjoo0606
-      - SPRING_DATASOURCE_DRIVER_CLASS=com.mysql.cj.jdbc.Driver
+      SPRING_DATASOURCE_URL: jdbc:mysql://sunjoo-user.clau8wyu484y.ap-northeast-2.rds.amazonaws.com:3306
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: sunjoo0606
+      SPRING_DATASOURCE_DRIVER_CLASS: com.mysql.cj.jdbc.Driver
