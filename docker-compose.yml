@@ -1,27 +1,19 @@
 version: '3.8'
 services:
-    redis:
-      image:
-        ${DOCKER_USERNAME}/sunjoo:sunjoo_redis
-      restart: always
-      ports:
-        - "6379:6379"
-      env_file:
-        - .env
+#  redis:
+#    image: sunyerim/sunjoo:sunjoo_redis
+#    restart: always
+#    ports:
+#      - "6379:6379"
 
-    user:
-      image: ${DOCKER_USERNAME}/sunjoo:user
-      container_name: user
-      restart: always
-      #    depends_on:
-      #      - redis
-      ports:
-        - "8082:8082"
-      env_file:
-        - .env
-      environment:
-        - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
-        - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
-        - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
-        - SPRING_DATASOURCE_DRIVER_CLASS=${SPRING_DATASOURCE_DRIVER_CLASS}
-
+  user:
+    image: sunyerim/sunjoo:user
+    container_name: user
+    restart: always
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://sunjoo-user.clau8wyu484y.ap-northeast-2.rds.amazonaws.com:3306
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=sunjoo0606
+      - SPRING_DATASOURCE_DRIVER_CLASS=com.mysql.cj.jdbc.Driver
