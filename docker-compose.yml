@@ -1,22 +1,27 @@
 version: '3.8'
 services:
-#  redis:
-#    image:
-#      ${DOCKER_USERNAME}/sunjoo:sunjoo_redis
-#    restart: always
-#    ports:
-#      - "6379:6379"
+    redis:
+      image:
+        ${DOCKER_USERNAME}/sunjoo:sunjoo_redis
+      restart: always
+      ports:
+        - "6379:6379"
+      env_file:
+        - .env
 
-  user:
-    image: ${DOCKER_USERNAME}/sunjoo:user
-    container_name: user
-    restart: always
-#    depends_on:
-#      - redis
-    ports:
-      - "8082:8082"
-    environment:
-      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
-      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
-      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
-      SPRING_DATASOURCE_DRIVER_CLASS: ${SPRING_DATASOURCE_DRIVER_CLASS}
+    user:
+      image: ${DOCKER_USERNAME}/sunjoo:user
+      container_name: user
+      restart: always
+      #    depends_on:
+      #      - redis
+      ports:
+        - "8082:8082"
+      env_file:
+        - .env
+      environment:
+        - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
+        - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
+        - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+        - SPRING_DATASOURCE_DRIVER_CLASS=${SPRING_DATASOURCE_DRIVER_CLASS}
+
